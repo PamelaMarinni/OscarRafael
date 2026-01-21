@@ -83,7 +83,7 @@
     padding: 60px 20px;
     max-width: 900px;
     margin: auto;
-    background: transparent; /* remove quadrados brancos */
+    background: transparent;
     color: #2B2B2B;
   }
 
@@ -104,27 +104,45 @@
   }
   .music-links a:hover { color: #FFD700; transform: scale(1.05); }
 
-  /* GALERIA */
-  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-  .gallery img { width: 100%; border-radius: 6px; }
+  /* BOTÃO PDF NORMAL */
+.btn-pdf {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 28px;
+  background: #0F2A44;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+}
 
-  /* PDF BUTTON */
-  .btn-pdf {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 14px 28px;
-    background: #0F2A44;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-  }
-  .btn-pdf:hover { 
+.btn-pdf:hover {
   background: #FFD700; /* amarelo */
   color: #0F2A44;      /* azul escuro para contraste */
-  transform: scale(1.05); /* efeito leve de aumento */
+  transform: scale(1.05);
   transition: 0.3s;
 }
+
+/* BOTÃO PDF PULSANTE */
+.btn-pdf-pulse {
+  animation: pulseButton 1.2s infinite alternate;
+}
+
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #FFD700;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700;
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #FFD700, 0 0 40px #FFD700;
+  }
+}
+
 
 
   /* FOOTER */
@@ -158,39 +176,75 @@
   .icon-link:hover .icon-circle { background: #0F2A44; color: #FFD700; transform: scale(1.2); }
   .icon-link:hover p { color: #0F2A44; }
 
-.section {
-  padding: 80px 20px;       /* menos espaço interno, top e bottom */
-  max-width: 900px;
-  margin: 50px auto;        /* menos distância entre seções */
-  scroll-margin-top: 160px;
+  /* SECTIONS CUSTOM */
+  .section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 50px auto;
+    scroll-margin-top: 160px;
+  }
+
+  .section h2 {
+    margin-bottom: 20px;
+    color: #0F2A44;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    animation: pulseText 1s infinite alternate;
+  }
+
+  @keyframes pulseText {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  /* CARROSSEL HORIZONTAL */
+  .horizontal-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    margin: 20px auto;
+    overflow: hidden;
+  }
+
+  .carousel-track {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease;
+  overflow-x: auto;       /* permite scroll horizontal */
+  scroll-behavior: smooth; /* desliza suavemente */
+  scrollbar-width: none;  /* esconde scrollbar no Firefox */
 }
 
-.section h2 {
-  margin-bottom: 20px;
-  color: #0F2A44; /* azul escuro */
-  text-align: center;
-  font-size: 32px;
-  font-weight: 600;
-  
-  /* Animação de leve pulso */
-  animation: pulseText 1s infinite alternate;
+
+ .carousel-track img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;  /* imagem inteira */
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: transparent; /* ou a mesma cor do site */
 }
 
-@keyframes pulseText {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05); /* aumenta levemente o tamanho */
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
+  .horizontal-carousel .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: #0F2A44;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    padding: 5px 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .horizontal-carousel .arrow.left { left: 0; }
+  .horizontal-carousel .arrow.right { right: 0; }
 
 </style>
-
 </head>
 <body>
 
@@ -205,11 +259,10 @@
   <header class="hero">
     <img src="imagem/hero.jpg" alt="Oscar Rafael com microfone" class="hero-img">
     <div class="hero-text">
-  <h1>Oscar Rafael</h1>
-  <p>Cantor Sertanejo</p>  <!-- aqui você acrescenta a descrição do estilo -->
-  <a href="#plataformas-de-musicas" class="btn-pdf">🎵 Ver plataformas musicais</a>
-</div>
-
+      <h1>Oscar Rafael</h1>
+      <p>Cantor Sertanejo</p>
+      <a href="#plataformas-de-musicas" class="btn-pdf">🎵 Ver plataformas musicais</a>
+    </div>
   </header>
 
   <!-- SOBRE -->
@@ -232,48 +285,61 @@
     </ul>
   </section>
 
- <!-- PROJETO -->
-<section id="projeto" class="section gray">
-  <h2>PROJETO CULTURAL</h2>
- <p>
-  <strong>O Som da Felicidade</strong> (PRONAC 257865) é uma iniciativa cultural aprovada pela Lei Rouanet,
-  voltada à promoção da música como ferramenta de inclusão social e transformação cultural.
-</p>
-<ul>
-  <li>Democratização do acesso à cultura</li>
-  <li>Impacto social e educativo</li>
-  <li>Valorização da música brasileira</li>
-</ul>
-  <a href="pdf/projeto-o-som-da-felicidade.pdf" target="_blank" class="btn-pdf">
-    📄 Ver projeto completo (PDF)
-  </a>
-</section>
+  <!-- PROJETO -->
+  <section id="projeto" class="section gray">
+    <h2>PROJETO CULTURAL</h2>
+    <p>
+      <strong>O Som da Felicidade</strong> (PRONAC 257865) é uma iniciativa cultural aprovada pela Lei Rouanet,
+      voltada à promoção da música como ferramenta de inclusão social e transformação cultural.
+    </p>
+    <ul>
+      <li>Democratização do acesso à cultura</li>
+      <li>Impacto social e educativo</li>
+      <li>Valorização da música brasileira</li>
+    </ul>
 
-<!-- PATROCÍNIO -->
-<section id="patrocinio" class="section gray">
-  <h2>POR QUE PATROCINAR</h2>
-  <ul>
-    <li>Incentivo fiscal via Lei Rouanet</li>
-    <li>Fortalecimento da imagem institucional (ESG)</li>
-    <li>Exposição de marca em ações culturais</li>
-  </ul>
-</section>
+    <!-- CARROSSEL HORIZONTAL -->
+    <div class="horizontal-carousel">
+      <span class="arrow left">&#10094;</span>
+      <div class="carousel-track"></div>
+      <span class="arrow right">&#10095;</span>
+    </div>
 
- <!-- CONTATO -->
+    <a href="pdf/projeto-o-som-da-felicidade.pdf" target="_blank" class="btn-pdf btn-pdf-pulse">
+  📄 Ver projeto completo (PDF)
+    </a>
+  </section>
+
+  <!-- PATROCÍNIO -->
+  <section id="patrocinio" class="section gray">
+    <h2>POR QUE PATROCINAR</h2>
+    <ul>
+      <li>Incentivo fiscal via Lei Rouanet</li>
+      <li>Fortalecimento da imagem institucional (ESG)</li>
+      <li>Exposição de marca em ações culturais</li>
+    </ul>
+  </section>
+
+  <!-- CONTATO -->
   <section id="contato" class="section gray">
     <h2 class="contato-titulo">CONTATO</h2>
     <div class="contato-icons">
-      <a href="mailto:exemplo@email.com" target="_blank" class="icon-link">
-        <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=oscardalpizzol@gmail.com&su=Contato%20Portfólio&body=Olá%20Oscar,%20gostaria%20de%20falar%20sobre%20seu%20projeto." 
+         target="_blank" 
+         class="icon-link">
+        <div class="icon-circle">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
         <p>E-mail</p>
       </a>
-      <a href="https://wa.me/5511999999999" target="_blank" class="icon-link">
-        <div class="icon-circle"><i class="fa-brands fa-whatsapp"></i></div>
+
+      <a href="https://wa.me/554199950185?text=Olá%20Oscar,%20quero%20falar%20sobre%20o%20seu%20projeto" 
+         target="_blank" 
+         class="icon-link">
+        <div class="icon-circle">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
         <p>WhatsApp</p>
-      </a>
-      <a href="https://www.instagram.com/exemplo" target="_blank" class="icon-link">
-        <div class="icon-circle"><i class="fa-brands fa-instagram"></i></div>
-        <p>Instagram</p>
       </a>
     </div>
   </section>
@@ -282,5 +348,28 @@
     <p>© 2026 Oscar Rafael • Todos os direitos reservados</p>
   </footer>
 
+  <script>
+  // CARREGAR IMAGENS NA GALERIA HORIZONTAL
+  const track = document.querySelector('.carousel-track');
+  const totalImages = 12;
+
+  for(let i=1; i<=totalImages; i++){
+    const img = document.createElement('img');
+    img.src = `imagem/img${i}.jpg`;
+    track.appendChild(img);
+  }
+
+  const scrollPerClick = 220; // largura da imagem + gap
+
+  document.querySelector('.horizontal-carousel .arrow.left').addEventListener('click', ()=>{
+    track.scrollLeft -= scrollPerClick; // vai para a esquerda
+  });
+
+  document.querySelector('.horizontal-carousel .arrow.right').addEventListener('click', ()=>{
+    track.scrollLeft += scrollPerClick; // vai para a direita
+  });
+</script>
+
 </body>
 </html>
+
