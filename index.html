@@ -6,105 +6,184 @@
   <title>Oscar Rafael | Portfólio Cultural</title>
 
   <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <style>
-  /* RESET E FONTES */
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-  html { scroll-behavior: smooth; }
+<style>
+/* =========================
+   RESET E FONTES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-  /* FUNDO E COR DO TEXTO */
-  body {
-    background: linear-gradient(180deg, #1E3A5F 0%, #A9C4E0 100%);
-    color: #2B2B2B;
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  /* MENU */
-  .menu {
-    background: #0F2A44;
-    padding: 15px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
+/* =========================
+   FUNDO E TEXTO
+========================= */
+body {
+  background: linear-gradient(180deg, #1E3A5F 0%, #A9C4E0 100%);
+  color: #2B2B2B;
+  margin: 0;
+  padding: 0;
+}
 
-  .menu a {
-    color: #fff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s, transform 0.3s;
-  }
+/* =========================
+   MENU
+========================= */
+.menu {
+  background: #0F2A44;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-  .menu a:hover {
-    color: #FFD700;
-    animation: pulse 0.6s infinite alternate;
-  }
+.menu a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s;
+}
 
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
-  }
+.menu a:hover {
+  color: #FFD700;
+  animation: pulse 0.6s infinite alternate;
+}
 
-  /* HERO */
-  .hero { position: relative; width: 100%; overflow: hidden; }
-  .hero-img { width: 100%; height: 90vh; object-fit: cover; display: block; }
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(15,42,68,0.55);
-    z-index: 1;
-  }
-  .hero-text {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-  }
-  .hero-text h1 { font-size: 48px; font-weight: 600; }
-  .hero-text p { font-size: 20px; margin-top: 10px; }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
 
-  /* SECTIONS */
-  .section {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: auto;
-    background: transparent;
-    color: #2B2B2B;
-  }
+/* =========================
+   HERO
+========================= */
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
 
-  .section h2 {
-    margin-bottom: 20px;
-    color: #0F2A44;
-  }
+.hero-img {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+  display: block;
+}
 
-  ul { padding-left: 20px; }
-  li { margin-bottom: 10px; }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15,42,68,0.55);
+  z-index: 1;
+}
 
-  /* MÚSICAS */
-  .music-links a {
-    color: #1F4E79;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s, transform 0.2s;
-  }
-  .music-links a:hover { color: #FFD700; transform: scale(1.05); }
+.hero-text {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
 
-  /* BOTÃO PDF NORMAL */
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.hero-text p {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* =========================
+   SECTIONS (PADRÃO)
+========================= */
+.section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 50px auto;
+  background: transparent;
+  color: #2B2B2B;
+  scroll-margin-top: 160px;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  color: #0F2A44;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  animation: pulseText 1s infinite alternate;
+}
+
+@keyframes pulseText {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* =========================
+   MÚSICAS
+========================= */
+.music-links a {
+  color: #1F4E79; /* azul padrão */
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.music-links a i {
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+/* HOVER: tudo muda junto */
+.music-links a:hover {
+  color: #FFD700;
+  transform: scale(1.05);
+}
+
+#plataformas-de-musicas ul {
+  margin-top: 40px;
+}
+
+#plataformas-de-musicas li {
+  margin-bottom: 20px;
+}
+
+/* =========================
+   BOTÕES PDF
+========================= */
 .btn-pdf {
   display: inline-block;
   margin-top: 25px;
@@ -114,154 +193,325 @@
   text-decoration: none;
   border-radius: 6px;
   font-weight: 500;
-}
-
-.btn-pdf:hover {
-  background: #FFD700; /* amarelo */
-  color: #0F2A44;      /* azul escuro para contraste */
-  transform: scale(1.05);
   transition: 0.3s;
 }
 
-/* BOTÃO PDF PULSANTE */
+.btn-pdf:hover {
+  background: #FFD700;
+  color: #0F2A44;
+  transform: scale(1.05);
+}
+
 .btn-pdf-pulse {
   animation: pulseButton 1.2s infinite alternate;
 }
 
 @keyframes pulseButton {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px #FFD700;
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700;
-  }
-  100% {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px #FFD700, 0 0 40px #FFD700;
-  }
+  0% { transform: scale(1); box-shadow: 0 0 10px #FFD700; }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700; }
+  100% { transform: scale(1.1); box-shadow: 0 0 25px #FFD700, 0 0 40px #FFD700; }
 }
 
+/* =========================
+   SOBRE
+========================= */
+.sobre {
+  text-align: center;
+  padding: 80px 20px 60px;
+}
 
+.foto-perfil {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #0F2A44;
+  margin: 20px auto;
+  display: block;
+}
 
-  /* FOOTER */
-  footer { background: #0F2A44; color: white; text-align: center; padding: 25px; }
+.sobre p {
+  max-width: 700px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+}
 
-  /* SOBRE */
-  .sobre { text-align: center; padding-top: 80px; padding-bottom: 60px; }
-  .foto-perfil {
-    width: 180px; height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #0F2A44;
-    margin: 20px auto;
-    display: block;
-  }
-  .sobre p { max-width: 700px; margin: 20px auto 0 auto; line-height: 1.6; }
+/* =========================
+   CONTATO
+========================= */
+.contato-titulo {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #0F2A44;
+  font-size: 28px;
+}
 
-  /* CONTATO */
-  .contato-titulo { text-align: center; margin-bottom: 30px; color: #0F2A44; font-size: 28px; }
-  .contato-icons { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
-  .icon-link { display: flex; flex-direction: column; align-items: center; text-decoration: none; transition: transform 0.3s; }
-  .icon-link p { margin-top: 10px; font-size: 14px; font-weight: 500; color: #0F2A44; transition: color 0.3s; text-align: center; }
-  .icon-circle {
-    width: 70px; height: 70px; border-radius: 50%;
-    background: #FFD700;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 28px; color: #0F2A44;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s, background 0.3s, color 0.3s;
-  }
-  .icon-link:hover .icon-circle { background: #0F2A44; color: #FFD700; transform: scale(1.2); }
-  .icon-link:hover p { color: #0F2A44; }
-
-  /* SECTIONS CUSTOM */
-  .section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: 50px auto;
-    scroll-margin-top: 160px;
-  }
-
-  .section h2 {
-    margin-bottom: 20px;
-    color: #0F2A44;
-    text-align: center;
-    font-size: 32px;
-    font-weight: 600;
-    animation: pulseText 1s infinite alternate;
-  }
-
-  @keyframes pulseText {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-
-  /* CARROSSEL HORIZONTAL */
-  .horizontal-carousel {
-    position: relative;
-    width: 100%;
-    max-width: 1080px;
-    margin: 20px auto;
-    overflow: hidden;
-  }
-
-  .carousel-track {
+.contato-icons {
   display: flex;
-  gap: 10px;
-  transition: transform 0.3s ease;
-  overflow-x: auto;       /* permite scroll horizontal */
-  scroll-behavior: smooth; /* desliza suavemente */
-  scrollbar-width: none;  /* esconde scrollbar no Firefox */
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.icon-link p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0F2A44;
+  transition: color 0.3s;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #FFD700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #0F2A44;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background 0.3s, color 0.3s;
+}
+
+.icon-link:hover .icon-circle {
+  background: #0F2A44;
+  color: #FFD700;
+  transform: scale(1.2);
+}
+
+.icon-link:hover p {
+  color: #0F2A44;
+}
+
+/* =========================
+   PROJETO / FLIPBOOK
+========================= */
+#projeto {
+  max-width: 1400px;
+}
+
+.project-intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.flipbook {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1000px;
+  overflow: visible;
+}
+
+.page-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.nav {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #000;
+}
+
+.page-indicator {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   BOTÃO APOIAR PROJETO
+========================= */
+.project-cta {
+  text-align: center;
+  margin: 50px 0 20px;
+}
+
+.attention-btn {
+  display: inline-block;
+  padding: 16px 46px;
+  background: #0F2A44;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 18px rgba(15,42,68,0.35);
+  transition: all 0.3s ease;
+  animation: pulseAttention 1.6s infinite;
+}
+
+.attention-btn:hover {
+  background: #FFD700;
+  color: #0F2A44;
+  transform: scale(1.08);
+  box-shadow: 0 0 15px #FFD700, 0 0 30px rgba(255,215,0,0.8);
+}
+
+@keyframes pulseAttention {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(255,215,0,0.6); }
+  50% { transform: scale(1.06); box-shadow: 0 0 18px rgba(255,215,0,0.9); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(255,215,0,0.6); }
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  background: #0F2A44;
+  color: white;
+  text-align: center;
+  padding: 25px;
 }
 
 
- .carousel-track img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;  /* imagem inteira */
-  border-radius: 8px;
-  flex-shrink: 0;
-  background: transparent; /* ou a mesma cor do site */
+
+/* ANIMAÇÃO DE TROCA DE PÁGINA */
+.page-container img {
+  transition: 
+    transform 0.45s ease,
+    opacity 0.35s ease;
+}
+
+/* saindo para frente */
+.page-exit-next {
+  transform: translateX(-60px);
+  opacity: 0;
+}
+
+/* saindo para trás */
+.page-exit-prev {
+  transform: translateX(60px);
+  opacity: 0;
+}
+
+/* entrando */
+.page-enter {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 
-  .horizontal-carousel .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 40px;
-    color: #0F2A44;
-    background: rgba(255,255,255,0.7);
-    border-radius: 50%;
-    padding: 5px 12px;
-    cursor: pointer;
-    user-select: none;
-  }
+/* CONTATO INLINE ESCONDIDO */
+.contact-inline {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.6s ease;
+  margin-top: 20px;
+  text-align: center;
+}
 
-  .horizontal-carousel .arrow.left { left: 0; }
-  .horizontal-carousel .arrow.right { right: 0; }
+/* CONTATO APARECENDO */
+.contact-inline.show {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 40px;
+}
+
+.contact-inline h3 {
+  margin-bottom: 25px;
+  color: #0F2A44;
+  font-size: 24px;
+}
+
+/* FORÇAR PROJETO + PATROCÍNIO COLADOS */
+section#projeto.section {
+  margin-bottom: 0 !important;
+  padding-bottom: 30px !important;
+}
+
+section#patrocinio.section {
+  margin-top: 0 !important;
+  padding-top: 30px !important;
+}
+
+
+.hero-buttons .btn-pdf {
+  padding: 12px 28px;
+  font-size: 16px;
+  background: #0F2A44;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid #FFD700; /* borda amarela */
+  box-shadow: 0 0 8px #FFD700; /* brilho */
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-pdf:hover {
+  background: #FFD700; /* amarelo de fundo ao passar o mouse */
+  color: #0F2A44;       /* texto azul escuro */
+  box-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700; /* brilho maior no hover */
+  transform: scale(1.05);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center; /* centraliza os botões */
+  gap: 20px; /* distância entre os botões */
+  margin-top: 20px; /* distância do texto acima */
+}
+
+
+
+.nav {
+  background: none;           /* sem fundo */
+  color: #0F2A44;             /* cor da seta */
+  border: none;               /* sem borda */
+  font-size: 3rem;            /* maior que antes */
+  font-weight: bold;          /* mais destaque */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3); /* sombra sutil pra se destacar */
+}
+
+.nav:hover {
+  color: #FFD700;             /* amarelo ao passar o mouse */
+  transform: scale(1.2);      /* aumenta levemente */
+}
 
 </style>
+
 </head>
 <body>
 
-  <!-- MENU -->
-  <nav class="menu">
-    <a href="#sobre">Sobre</a>
-    <a href="#projeto">Projeto</a>
-    <a href="#contato">Contato</a>
-  </nav>
-
+ 
   <!-- HERO -->
   <header class="hero">
     <img src="imagem/hero.jpg" alt="Oscar Rafael com microfone" class="hero-img">
     <div class="hero-text">
       <h1>Oscar Rafael</h1>
       <p>Cantor Sertanejo</p>
-      <a href="#plataformas-de-musicas" class="btn-pdf">🎵 Ver plataformas musicais</a>
+     <!-- Botões de navegação -->
+  <div class="hero-buttons">
+    <a href="#sobre" class="btn-pdf">Sobre Mim</a>
+    <a href="#plataformas-de-musicas" class="btn-pdf">Plataformas Musicais</a>
+    <a href="#projeto" class="btn-pdf">Projeto Cultural</a>
     </div>
   </header>
 
@@ -278,97 +528,203 @@
 
   <!-- MÚSICAS -->
   <section id="plataformas-de-musicas" class="section">
-    <h2>PLATAFORMA DE MÚSICAS</h2>
-    <ul class="music-links">
-      <li>🎬 <a href="https://www.youtube.com/@cantoroscarrafael" target="_blank">YouTube – Canal Oficial</a></li>
-      <li>🎵 <a href="https://music.amazon.com.br/search/oscar-rafael/albums?filter=IsLibrary%7Cfalse&sc=none" target="_blank">Amazon Music – Perfil do Artista</a></li>
-    </ul>
+    <h2>PLATAFORMAS MUSICAIS</h2>
+   <ul class="music-links">
+   <li>
+  <a href="https://www.youtube.com/@cantoroscarrafael" target="_blank">
+    <i class="fa-brands fa-youtube"></i> YouTube – Canal Oficial
+  </a>
+</li>
+
+<li>
+  <a href="https://music.amazon.com.br/search/oscar-rafael/albums?filter=IsLibrary%7Cfalse&sc=none" target="_blank">
+    <i class="fa-brands fa-amazon"></i> Amazon Music
+  </a>
+</li>
+
+<li>
+  <a href="https://www.deezer.com/br/artist/76807272" target="_blank">
+    <i class="fa-brands fa-deezer"></i> Deezer
+  </a>
+</li>
+
+<li>
+  <a href="https://open.spotify.com/intl-pt/artist/4IHZLUxHaX3JAH0OXlgYJx" target="_blank">
+    <i class="fa-brands fa-spotify"></i> Spotify
+  </a>
+</li>
+
+</ul>
+
   </section>
 
-  <!-- PROJETO -->
-  <section id="projeto" class="section gray">
-    <h2>PROJETO CULTURAL</h2>
-    <p>
-      <strong>O Som da Felicidade</strong> (PRONAC 257865) é uma iniciativa cultural aprovada pela Lei Rouanet,
-      voltada à promoção da música como ferramenta de inclusão social e transformação cultural.
-    </p>
-    <ul>
-      <li>Democratização do acesso à cultura</li>
-      <li>Impacto social e educativo</li>
-      <li>Valorização da música brasileira</li>
-    </ul>
+<!-- PROJETO -->
+<section id="projeto" class="section gray">
+  <h2>PROJETO CULTURAL</h2>
 
-    <!-- CARROSSEL HORIZONTAL -->
-    <div class="horizontal-carousel">
-      <span class="arrow left">&#10094;</span>
-      <div class="carousel-track"></div>
-      <span class="arrow right">&#10095;</span>
+  <p class="project-intro">
+    <strong>O Som da Felicidade</strong> (PRONAC 257865) — projeto aprovado pela Lei Rouanet.
+  </p>
+
+  <div class="flipbook">
+
+    <button class="nav prev">&#10094;</button>
+
+    <div class="page-container">
+      <img id="pageImage" src="imagem/img1.jpg" alt="Página do projeto">
     </div>
 
-    <a href="pdf/projeto-o-som-da-felicidade.pdf" target="_blank" class="btn-pdf btn-pdf-pulse">
-  📄 Ver projeto completo (PDF)
+    <button class="nav next">&#10095;</button>
+
+  </div>
+
+  <p class="page-indicator">
+    Página <span id="pageNumber">1</span> de 12
+  </p>
+</section>
+
+
+<!-- PATROCÍNIO -->
+<section id="patrocinio" class="section gray">
+  <h2>POR QUE PATROCINAR</h2>
+
+  <ul>
+  <li>
+    <strong>Sem custo direto para a empresa</strong> — o apoio acontece usando parte do
+    imposto que a empresa já pagaria, sem mexer no dinheiro do caixa.
+  </li>
+
+  <li>
+    <strong>Apoio à cultura e à comunidade</strong> — o projeto leva música, arte e
+    experiências culturais para o público, gerando impacto social real.
+  </li>
+
+  <li>
+    <strong>Valorização da marca</strong> — a empresa passa a ser vista como apoiadora
+    da cultura e de iniciativas que fazem a diferença.
+  </li>
+
+  <li>
+    <strong>Divulgação institucional</strong> — a marca aparece de forma positiva em
+    ações culturais, materiais de divulgação e comunicação do projeto.
+  </li>
+</ul>
+
+
+ <!-- BOTÃO AÇÃO -->
+<div class="project-cta">
+  <button id="showContactBtn" class="attention-btn">
+    Quero apoiar este projeto
+  </button>
+</div>
+
+<!-- CONTATO INLINE (INICIALMENTE ESCONDIDO) -->
+<div id="contactInline" class="contact-inline">
+  <h3>Entre em contato</h3>
+
+  <div class="contato-icons">
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=oscardalpizzol@gmail.com&su=Contato%20Portfólio&body=Olá%20Oscar,%20gostaria%20de%20falar%20sobre%20seu%20projeto."
+       target="_blank"
+       class="icon-link">
+      <div class="icon-circle">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <p>E-mail</p>
     </a>
-  </section>
 
-  <!-- PATROCÍNIO -->
-  <section id="patrocinio" class="section gray">
-    <h2>POR QUE PATROCINAR</h2>
-    <ul>
-      <li>Incentivo fiscal via Lei Rouanet</li>
-      <li>Fortalecimento da imagem institucional (ESG)</li>
-      <li>Exposição de marca em ações culturais</li>
-    </ul>
-  </section>
+    <a href="https://wa.me/554199950185?text=Olá%20Oscar,%20quero%20falar%20sobre%20o%20seu%20projeto"
+       target="_blank"
+       class="icon-link">
+      <div class="icon-circle">
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+      <p>WhatsApp</p>
+    </a>
+  </div>
+</div>
 
-  <!-- CONTATO -->
-  <section id="contato" class="section gray">
-    <h2 class="contato-titulo">CONTATO</h2>
-    <div class="contato-icons">
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=oscardalpizzol@gmail.com&su=Contato%20Portfólio&body=Olá%20Oscar,%20gostaria%20de%20falar%20sobre%20seu%20projeto." 
-         target="_blank" 
-         class="icon-link">
-        <div class="icon-circle">
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-        <p>E-mail</p>
-      </a>
-
-      <a href="https://wa.me/554199950185?text=Olá%20Oscar,%20quero%20falar%20sobre%20o%20seu%20projeto" 
-         target="_blank" 
-         class="icon-link">
-        <div class="icon-circle">
-          <i class="fa-brands fa-whatsapp"></i>
-        </div>
-        <p>WhatsApp</p>
-      </a>
-    </div>
   </section>
 
   <footer>
     <p>© 2026 Oscar Rafael • Todos os direitos reservados</p>
   </footer>
 
-  <script>
-  // CARREGAR IMAGENS NA GALERIA HORIZONTAL
-  const track = document.querySelector('.carousel-track');
-  const totalImages = 12;
+ <script>
+  /* ================================
+     CONFIGURAÇÕES DO PROJETO
+  ================================= */
+  const totalPages = 12;          // quantidade de imagens
+  let currentPage = 1;            // página inicial
+  const imagePath = "imagem";     // pasta das imagens
 
-  for(let i=1; i<=totalImages; i++){
-    const img = document.createElement('img');
-    img.src = `imagem/img${i}.jpg`;
-    track.appendChild(img);
-  }
+  /* ================================
+     ELEMENTOS
+  ================================= */
+  const pageImage = document.getElementById("pageImage");
+  const pageNumber = document.getElementById("pageNumber");
+  const btnNext = document.querySelector(".nav.next");
+  const btnPrev = document.querySelector(".nav.prev");
 
-  const scrollPerClick = 220; // largura da imagem + gap
+ /* ================================
+   FUNÇÃO PARA TROCAR PÁGINA
+================================= */
+function changePage(direction) {
+  const nextPage = currentPage + direction;
 
-  document.querySelector('.horizontal-carousel .arrow.left').addEventListener('click', ()=>{
-    track.scrollLeft -= scrollPerClick; // vai para a esquerda
+  // trava início e fim
+  if (nextPage < 1 || nextPage > totalPages) return;
+
+  // anima saída (sensação de folha indo)
+  pageImage.style.opacity = "0";
+  pageImage.style.transform = `translateX(${direction === 1 ? -80 : 80}px) scale(0.98)`;
+
+  setTimeout(() => {
+    currentPage = nextPage;
+    pageImage.src = `${imagePath}/img${currentPage}.jpg`;
+    pageNumber.textContent = currentPage;
+
+    // prepara entrada
+    pageImage.style.transform = `translateX(${direction === 1 ? 80 : -80}px) scale(0.98)`;
+
+    requestAnimationFrame(() => {
+      pageImage.style.opacity = "1";
+      pageImage.style.transform = "translateX(0) scale(1)";
+    });
+  }, 320);
+}
+
+  /* ================================
+     EVENTOS DOS BOTÕES
+  ================================= */
+  btnNext.addEventListener("click", () => changePage(1));
+  btnPrev.addEventListener("click", () => changePage(-1));
+
+  /* ================================
+     SUPORTE A TECLADO (opcional)
+  ================================= */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") changePage(1);
+    if (e.key === "ArrowLeft") changePage(-1);
   });
 
-  document.querySelector('.horizontal-carousel .arrow.right').addEventListener('click', ()=>{
-    track.scrollLeft += scrollPerClick; // vai para a direita
-  });
+  /* ================================
+     INICIALIZAÇÃO
+  ================================= */
+  pageImage.src = `${imagePath}/img1.jpg`;
+  pageNumber.textContent = currentPage;
+
+
+  const btn = document.getElementById("showContactBtn");
+  const contact = document.getElementById("contactInline");
+
+ 
+btn.addEventListener("click", () => {
+  contact.classList.add("show"); // mostra o contato
+  btn.style.display = "none";   // some com o botão
+});
+
 </script>
+
 
 </body>
 </html>
