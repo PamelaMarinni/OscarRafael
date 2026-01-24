@@ -648,14 +648,14 @@ section#patrocinio.section {
   <footer>
     <p>© 2026 Oscar Rafael • Todos os direitos reservados</p>
   </footer>
-
- <script>
+<script>
   /* ================================
      CONFIGURAÇÕES DO PROJETO
   ================================= */
   const totalPages = 12;          // quantidade de imagens
   let currentPage = 1;            // página inicial
   const imagePath = "imagem";     // pasta das imagens
+  let isAnimating = false;        // trava para evitar cliques múltiplos
 
   /* ================================
      ELEMENTOS
@@ -664,34 +664,50 @@ section#patrocinio.section {
   const pageNumber = document.getElementById("pageNumber");
   const btnNext = document.querySelector(".nav.next");
   const btnPrev = document.querySelector(".nav.prev");
+  const btn = document.getElementById("showContactBtn");
+  const contact = document.getElementById("contactInline");
 
- /* ================================
-   FUNÇÃO PARA TROCAR PÁGINA
-================================= */
-function changePage(direction) {
-  const nextPage = currentPage + direction;
+  /* ================================
+     FUNÇÃO PARA TROCAR PÁGINA
+  ================================= */
+  function changePage(direction) {
+    if (isAnimating) return; // bloqueia se estiver animando
+    const nextPage = currentPage + direction;
 
-  // trava início e fim
-  if (nextPage < 1 || nextPage > totalPages) return;
+    if (nextPage < 1 || nextPage > totalPages) return;
 
-  // anima saída (sensação de folha indo)
-  pageImage.style.opacity = "0";
-  pageImage.style.transform = `translateX(${direction === 1 ? -80 : 80}px) scale(0.98)`;
+    isAnimating = true;
 
-  setTimeout(() => {
-    currentPage = nextPage;
-    pageImage.src = `${imagePath}/img${currentPage}.jpg`;
-    pageNumber.textContent = currentPage;
+    // cria imagem temporária para pré-carregar
+    const nextImage = new Image();
+    nextImage.src = `${imagePath}/img${nextPage}.jpg`;
 
-    // prepara entrada
-    pageImage.style.transform = `translateX(${direction === 1 ? 80 : -80}px) scale(0.98)`;
+    // animação de saída
+    pageImage.style.transition = "transform 0.45s ease, opacity 0.35s ease";
+    pageImage.style.opacity = "0";
+    pageImage.style.transform = `translateX(${direction === 1 ? -80 : 80}px) scale(0.98)`;
 
-    requestAnimationFrame(() => {
-      pageImage.style.opacity = "1";
-      pageImage.style.transform = "translateX(0) scale(1)";
-    });
-  }, 320);
-}
+    nextImage.onload = () => {
+      // troca de src só depois que carregar
+      setTimeout(() => {
+        currentPage = nextPage;
+        pageImage.src = nextImage.src;
+        pageNumber.textContent = currentPage;
+
+        // prepara entrada
+        pageImage.style.transform = `translateX(${direction === 1 ? 80 : -80}px) scale(0.98)`;
+        requestAnimationFrame(() => {
+          pageImage.style.opacity = "1";
+          pageImage.style.transform = "translateX(0) scale(1)";
+        });
+
+        // libera trava após animação
+        setTimeout(() => {
+          isAnimating = false;
+        }, 400);
+      }, 320);
+    };
+  }
 
   /* ================================
      EVENTOS DOS BOTÕES
@@ -713,17 +729,15 @@ function changePage(direction) {
   pageImage.src = `${imagePath}/img1.jpg`;
   pageNumber.textContent = currentPage;
 
-
-  const btn = document.getElementById("showContactBtn");
-  const contact = document.getElementById("contactInline");
-
- 
-btn.addEventListener("click", () => {
-  contact.classList.add("show"); // mostra o contato
-  btn.style.display = "none";   // some com o botão
-});
-
+  /* ================================
+     BOTÃO APOIAR PROJETO
+  ================================= */
+  btn.addEventListener("click", () => {
+    contact.classList.add("show"); // mostra o contato
+    btn.style.display = "none";    // some com o botão
+  });
 </script>
+
 
 
 </body>
