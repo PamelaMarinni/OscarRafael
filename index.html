@@ -495,6 +495,13 @@ section#patrocinio.section {
   transform: scale(1.2);      /* aumenta levemente */
 }
 
+#pageImage {
+  display: block;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+
 </style>
 
 </head>
@@ -648,31 +655,43 @@ section#patrocinio.section {
   <footer>
     <p>© 2026 Oscar Rafael • Todos os direitos reservados</p>
   </footer>
+
+
 <script>
 /* ================================
    CONFIGURAÇÕES DO PROJETO
 ================================ */
-const totalPages = 12;          // quantidade de imagens
-let currentPage = 1;            // página inicial
+const totalPages = 12;          // total de imagens
 const imagePath = "imagem";     // pasta das imagens
-let isAnimating = false;        // controla animação
+let currentPage = 1;            // página inicial
+let isAnimating = false;        // trava animação
 
 /* ================================
    ELEMENTOS
 ================================ */
-const pageImage = document.getElementById("pageImage");
+const pageImage  = document.getElementById("pageImage");
 const pageNumber = document.getElementById("pageNumber");
-const btnNext = document.querySelector(".nav.next");
-const btnPrev = document.querySelector(".nav.prev");
+const btnNext    = document.querySelector(".nav.next");
+const btnPrev    = document.querySelector(".nav.prev");
 
 /* ================================
-   FUNÇÃO PARA TROCAR PÁGINA
+   PRÉ-CARREGAMENTO DAS IMAGENS
+================================ */
+const imageCache = {};
+
+for (let i = 1; i <= totalPages; i++) {
+  const img = new Image();
+  img.src = `${imagePath}/img${i}.jpg`;
+  imageCache[i] = img;
+}
+
+/* ================================
+   FUNÇÃO DE TROCA DE PÁGINA
 ================================ */
 function changePage(direction) {
-  if (isAnimating) return;      // trava se estiver animando
-  const nextPage = currentPage + direction;
+  if (isAnimating) return;
 
-  // trava início e fim
+  const nextPage = currentPage + direction;
   if (nextPage < 1 || nextPage > totalPages) return;
 
   isAnimating = true;
@@ -683,7 +702,9 @@ function changePage(direction) {
 
   setTimeout(() => {
     currentPage = nextPage;
-    pageImage.src = `${imagePath}/img${currentPage}.jpg`;
+
+    // troca imagem já carregada
+    pageImage.src = imageCache[currentPage].src;
     pageNumber.textContent = currentPage;
 
     // prepara entrada
@@ -694,21 +715,29 @@ function changePage(direction) {
       pageImage.style.transform = "translateX(0) scale(1)";
     });
 
-    // libera clique após animação
-    setTimeout(() => { isAnimating = false; }, 350);
+    // libera animação
+    setTimeout(() => {
+      isAnimating = false;
+      updateButtons();
+    }, 350);
 
   }, 320);
 }
 
 /* ================================
-   EVENTOS DOS BOTÕES
+   ATUALIZA ESTADO DOS BOTÕES
+================================ */
+function updateButtons() {
+  btnPrev.style.opacity = currentPage === 1 ? "0.3" : "1";
+  btnNext.style.opacity = currentPage === totalPages ? "0.3" : "1";
+}
+
+/* ================================
+   EVENTOS
 ================================ */
 btnNext.addEventListener("click", () => changePage(1));
 btnPrev.addEventListener("click", () => changePage(-1));
 
-/* ================================
-   SUPORTE A TECLADO (opcional)
-================================ */
 document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") changePage(1);
   if (e.key === "ArrowLeft") changePage(-1);
@@ -717,20 +746,23 @@ document.addEventListener("keydown", (e) => {
 /* ================================
    INICIALIZAÇÃO
 ================================ */
-pageImage.src = `${imagePath}/img1.jpg`;
+pageImage.src = imageCache[1].src;
 pageNumber.textContent = currentPage;
+updateButtons();
 
+/* ================================
+   BOTÃO DE CONTATO (SEU EXTRA)
+================================ */
 const btn = document.getElementById("showContactBtn");
 const contact = document.getElementById("contactInline");
 
-btn.addEventListener("click", () => {
-  contact.classList.add("show"); // mostra o contato
-  btn.style.display = "none";   // some com o botão
-});
+if (btn && contact) {
+  btn.addEventListener("click", () => {
+    contact.classList.add("show");
+    btn.style.display = "none";
+  });
+}
 </script>
-
-
-
 
 </body>
 </html>
